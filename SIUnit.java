@@ -7,29 +7,197 @@ import java.math.BigDecimal;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.3
  */
-public enum SIUnit {
+public enum SIUnit implements IUnit{
 	/** Electric Current */
-	AMPERE,
+	AMPERE{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Luminous Intensity */
-	CANDELA,
+	CANDELA{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Thermodynamic Temperature */
-	KELVIN,
+	KELVIN{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Mass */
-	KILOGRAM,
+	KILOGRAM{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Distance */
-	METER,
+	METER{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Substance */
-	MOLE,
+	MOLE{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	},
 	
 	/** Time */
-	SECOND;
+	SECOND{
+		@Override
+		public String symbol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit divideBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canAdd(IUnit o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	};
 	
 	/**
 	 * Primary frequency standard in which the photon absorption by transitions between
