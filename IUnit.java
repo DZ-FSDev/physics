@@ -1,7 +1,5 @@
 package com.dz_fs_dev.physics;
 
-import java.math.BigInteger;
-
 /**
  * The user of this interface should implement a representation
  * of a mathematical value which contains measurement units.
@@ -10,9 +8,9 @@ import java.math.BigInteger;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.3
  */
-public interface IUnit {
+public interface IUnit extends IScientificNotation{
 	/**
 	 * Returns the fully qualified name of the unit of measure.
 	 * 
@@ -21,8 +19,6 @@ public interface IUnit {
 	public String name();
 	
 	public String symbol();
-	
-	public BigInteger order();
 	
 	public IUnit divideBy(IUnit o);
 	
