@@ -10,7 +10,7 @@ package com.dz_fs_dev.physics;
  * @since 17.0.1
  * @version 0.0.3
  */
-public interface IUnit extends IScientificNotation{
+public interface IUnit {
 	/**
 	 * Returns the fully qualified name of the unit of measure.
 	 * 
