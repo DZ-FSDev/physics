@@ -1,201 +1,70 @@
 package com.dz_fs_dev.physics;
 
 import java.math.BigDecimal;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Contains all International System of Units constants and definitions.
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.3
+ * @version 0.0.7
  */
 public enum SIUnit implements IUnit{
 	/** Electric Current */
-	AMPERE{
+	AMPERE(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "A";
 		}
 	},
 	
 	/** Luminous Intensity */
-	CANDELA{
+	CANDELA(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "cd";
 		}
 	},
 	
 	/** Thermodynamic Temperature */
-	KELVIN{
+	KELVIN(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "K";
 		}
 	},
 	
 	/** Mass */
-	KILOGRAM{
+	KILOGRAM(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "g";
 		}
 	},
 	
 	/** Distance */
-	METER{
+	METER(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "m";
 		}
 	},
 	
 	/** Substance */
-	MOLE{
+	MOLE(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "mol";
 		}
 	},
 	
 	/** Time */
-	SECOND{
+	SECOND(BigDecimal.ZERO){
 		@Override
 		public String symbol() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit divideBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public IUnit multiplyBy(IUnit o) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public boolean canAdd(IUnit o) {
-			// TODO Auto-generated method stub
-			return false;
+			return "s";
 		}
 	};
 	
@@ -249,4 +118,36 @@ public enum SIUnit implements IUnit{
 	 * <p>Measured in Lumens per Watt. 
 	 */
 	final static BigDecimal LUMINOUS_EFFICACY = new BigDecimal("683");
+	
+	private @Getter @Setter BigDecimal value;
+	
+	private SIUnit(BigDecimal value) {
+		this.setValue(value);
+	}
+	
+	/**
+	 * @since 0.0.7
+	 */
+	@Override
+	public IUnit divideBy(IUnit o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * @since 0.0.7
+	 */
+	@Override
+	public IUnit multiplyBy(IUnit o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * @since 0.0.5
+	 */
+	@Override
+	public boolean canAdd(IUnit o) {
+		return o.symbol().equals(this.symbol());
+	}
 }
