@@ -7,9 +7,9 @@ import lombok.Setter;
 /**
  * Contains all International System of Units constants and definitions.
  * 
- * @author DZ_FSDev
+ * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.7
+ * @version 0.0.8
  */
 public enum SIUnit implements IUnit{
 	/** Electric Current */
@@ -141,13 +141,5 @@ public enum SIUnit implements IUnit{
 	public IUnit multiplyBy(IUnit o) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	/**
-	 * @since 0.0.5
-	 */
-	@Override
-	public boolean canAdd(IUnit o) {
-		return o.symbol().equals(this.symbol());
 	}
 }
