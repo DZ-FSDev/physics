@@ -6,7 +6,7 @@ package com.dz_fs_dev.physics;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
 public interface IScalar {
 	/**
@@ -16,7 +16,7 @@ public interface IScalar {
 	 * @return A string representation of this scalar measurement with units
 	 * represented as symbols. 
 	 */
-	public String toString();
+	public String toShortString();
 	
 	/**
 	 * Returns a string representation of this scalar measurement with units
