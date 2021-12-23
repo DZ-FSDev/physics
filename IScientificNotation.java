@@ -6,9 +6,9 @@ import java.math.BigInteger;
  * The user of this interface should implement a representation of 
  * scientific notation.
  * 
- * @author DZ_FSDev
+ * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
 public interface IScientificNotation {
 	/**
@@ -35,4 +35,11 @@ public interface IScientificNotation {
 	 * @return The order of the measurement.
 	 */
 	public BigInteger order();
+	
+	/**
+	 * Returns the number system the scientific notation is based off.
+	 * 
+	 * @return The number system the scientific notation is based off.
+	 */
+	public BigInteger base();
 }
