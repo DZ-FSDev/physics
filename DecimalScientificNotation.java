@@ -9,20 +9,26 @@ import lombok.Getter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
 public enum DecimalScientificNotation implements IScientificNotation{
-	KILO ("k", "kilo", 3);
+	MEGA ("M", "mega", 6),
+	KILO ("k", "kilo", 3),
+	HECTO ("h", "hecto", 2),
+	DECA ("da", "deca", 1),
+	DEFAULT("","",0),
+	DECI ("k", "deci", -1);
 	
 	private final @Getter String prefix;
 	private final @Getter String prefixLong;
 	private final @Getter int order;
 	
 	/**
+	 * Constructs a new decimal based order of magnitude.
 	 * 
-	 * @param prefix
-	 * @param prefixLong
-	 * @param order
+	 * @param prefix The short-form prefix representing the order of magnitude.
+	 * @param prefixLong The long-form prefix representing the order of magnitude.
+	 * @param order The order that the base is raised by to represent this magnitude.
 	 */
 	private DecimalScientificNotation(String prefix, String prefixLong, int order) {
 		this.prefix = prefix;
