@@ -15,16 +15,16 @@ import lombok.Setter;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class Scalar extends BigDecimal implements IScalar{
 	/**
 	 * @since 0.0.1
 	 */
 	private static final long serialVersionUID = -6321022537548657934L;
-	
+
 	private @Getter @Setter(AccessLevel.PRIVATE) IUnit units; 
-	
+
 	/**
 	 * Constructs a new Scalar based off a String representing a Scalar
 	 * quantity.
@@ -34,7 +34,7 @@ public class Scalar extends BigDecimal implements IScalar{
 	public Scalar(String value) {
 		super(value);
 	}
-	
+
 	@Builder
 	private static Scalar buildScalar(String value, IUnit units) {
 		Scalar scalar = new Scalar(value);
@@ -114,6 +114,7 @@ public class Scalar extends BigDecimal implements IScalar{
 
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BigDecimal divide(BigDecimal divisor, int scale, int roundingMode) {
 		// TODO Auto-generated method stub
@@ -130,6 +131,7 @@ public class Scalar extends BigDecimal implements IScalar{
 
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BigDecimal divide(BigDecimal divisor, int roundingMode) {
 		// TODO Auto-generated method stub
@@ -227,25 +229,26 @@ public class Scalar extends BigDecimal implements IScalar{
 
 
 	@Override
-	public BigDecimal pow(int n, MathContext mc) {
-		// TODO Auto-generated method stub
-		return super.pow(n, mc);
+	public Scalar pow(int n, MathContext mc) {
+		return new Scalar(super.pow(n, mc).toString());
 	}
 
 
-
+	/**
+	 * @since 0.0.3
+	 */
 	@Override
-	public BigDecimal abs() {
-		// TODO Auto-generated method stub
-		return super.abs();
+	public Scalar abs() {
+		return new Scalar(super.abs().toString());
 	}
 
 
-
+	/**
+	 * @since 0.0.3
+	 */
 	@Override
-	public BigDecimal abs(MathContext mc) {
-		// TODO Auto-generated method stub
-		return super.abs(mc);
+	public Scalar abs(MathContext mc) {
+		return new Scalar(super.abs(mc).toString());
 	}
 
 
@@ -330,6 +333,7 @@ public class Scalar extends BigDecimal implements IScalar{
 
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BigDecimal setScale(int newScale, int roundingMode) {
 		// TODO Auto-generated method stub
@@ -416,6 +420,103 @@ public class Scalar extends BigDecimal implements IScalar{
 		return super.hashCode();
 	}
 
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public BigInteger toBigInteger() {
+		return super.toBigInteger();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public BigInteger toBigIntegerExact() {
+		return super.toBigIntegerExact();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public long longValue() {
+		return super.longValue();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public long longValueExact() {
+		return super.longValueExact();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public int intValue() {
+		return super.intValue();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public int intValueExact() {
+		return super.intValueExact();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public short shortValueExact() {
+		return super.shortValueExact();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public byte byteValueExact() {
+		return super.byteValueExact();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public float floatValue() {
+		return super.floatValue();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public double doubleValue() {
+		return super.doubleValue();
+	}
+
+
+	/**
+	 * @since 0.0.3
+	 */
+	@Override
+	public BigDecimal ulp() {
+		return super.ulp();
+	}
 
 
 	@Override
@@ -424,111 +525,17 @@ public class Scalar extends BigDecimal implements IScalar{
 		return super.toString();
 	}
 
-
-
 	@Override
 	public String toEngineeringString() {
 		// TODO Auto-generated method stub
 		return super.toEngineeringString();
 	}
 
-
-
 	@Override
 	public String toPlainString() {
 		// TODO Auto-generated method stub
 		return super.toPlainString();
 	}
-
-
-
-	@Override
-	public BigInteger toBigInteger() {
-		// TODO Auto-generated method stub
-		return super.toBigInteger();
-	}
-
-
-
-	@Override
-	public BigInteger toBigIntegerExact() {
-		// TODO Auto-generated method stub
-		return super.toBigIntegerExact();
-	}
-
-
-
-	@Override
-	public long longValue() {
-		// TODO Auto-generated method stub
-		return super.longValue();
-	}
-
-
-
-	@Override
-	public long longValueExact() {
-		// TODO Auto-generated method stub
-		return super.longValueExact();
-	}
-
-
-
-	@Override
-	public int intValue() {
-		// TODO Auto-generated method stub
-		return super.intValue();
-	}
-
-
-
-	@Override
-	public int intValueExact() {
-		// TODO Auto-generated method stub
-		return super.intValueExact();
-	}
-
-
-
-	@Override
-	public short shortValueExact() {
-		// TODO Auto-generated method stub
-		return super.shortValueExact();
-	}
-
-
-
-	@Override
-	public byte byteValueExact() {
-		// TODO Auto-generated method stub
-		return super.byteValueExact();
-	}
-
-
-
-	@Override
-	public float floatValue() {
-		// TODO Auto-generated method stub
-		return super.floatValue();
-	}
-
-
-
-	@Override
-	public double doubleValue() {
-		// TODO Auto-generated method stub
-		return super.doubleValue();
-	}
-
-
-
-	@Override
-	public BigDecimal ulp() {
-		// TODO Auto-generated method stub
-		return super.ulp();
-	}
-
-
 
 	@Override
 	public String toLongString() {
@@ -541,5 +548,4 @@ public class Scalar extends BigDecimal implements IScalar{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
