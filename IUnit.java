@@ -1,3 +1,21 @@
+/*  Original Licensing Copyright
+ * 
+ *  This interface represents a value which containing measurement units.
+ *  Copyright (C) 2021  DZ-FSDev
+ *  
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package com.dz_fs_dev.physics;
 
 /**
@@ -8,7 +26,7 @@ package com.dz_fs_dev.physics;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.5
+ * @version 0.0.7
  */
 public interface IUnit {
 	/**
@@ -52,4 +70,37 @@ public interface IUnit {
 	public default boolean canAdd(IUnit o) {
 		return o.symbol().equals(this.symbol());
 	}
+	
+	/**
+	 * Returns new units that represent the square of this unit of measure.
+	 * 
+	 * @return New units that represent the square of this unit of measure.
+	 */
+	public IUnit squared();
+	
+	/**
+	 * Returns new units that represent the cube of this unit of measure.
+	 * 
+	 * @return New units that represent the cube of this unit of measure.
+	 */
+	public IUnit cubed();
+	
+	/**
+	 * Returns new units that represent the specified exponentiation of this
+	 * unit of measure. An exponentiation of 0 or 1 will result in the return
+	 * of the original unit of measure.
+	 * 
+	 * @param exponent The exponentiation to be applied; values of 0 and 1
+	 *                 are ignored.
+	 * @return New units that represent the specified exponentiation of this
+	 *         unit of measure.
+	 */
+	public IUnit pow(int exponent);
+	
+	/**
+	 * Inverts the unit of measure.
+	 * 
+	 * @return The inverted unit of measure.
+	 */
+	public IUnit inverse();
 }
