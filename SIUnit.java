@@ -1,3 +1,21 @@
+/*  Original Licensing Copyright
+ * 
+ *  Contains all International System of Units constants and definitions.
+ *  Copyright (C) 2021  DZ-FSDev
+ *  
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package com.dz_fs_dev.physics;
 
 import java.math.BigDecimal;
@@ -7,9 +25,11 @@ import lombok.Setter;
 /**
  * Contains all International System of Units constants and definitions.
  * 
+ * @see <a href=https://physics.nist.gov/cuu/Units/checklist.html>
+ *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.8
+ * @version 0.0.9
  */
 public enum SIUnit implements IUnit{
 	/** Electric Current */
@@ -139,6 +159,51 @@ public enum SIUnit implements IUnit{
 	 */
 	@Override
 	public IUnit multiplyBy(IUnit o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @since 0.0.9
+	 */
+	@Override
+	public String symbol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @since 0.0.9
+	 */
+	@Override
+	public IUnit squared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @since 0.0.9
+	 */
+	@Override
+	public IUnit cubed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @since 0.0.9
+	 */
+	@Override
+	public IUnit pow(int exponent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @since 0.0.9
+	 */
+	@Override
+	public IUnit inverse() {
 		// TODO Auto-generated method stub
 		return null;
 	}
