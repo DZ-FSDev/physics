@@ -19,8 +19,9 @@
 package com.dz_fs_dev.physics;
 
 import java.math.BigDecimal;
+
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Contains all International System of Units constants and definitions.
@@ -29,65 +30,9 @@ import lombok.Setter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.9
+ * @version 0.0.10
  */
-public enum SIUnit implements IUnit{
-	/** Electric Current */
-	AMPERE(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "A";
-		}
-	},
-	
-	/** Luminous Intensity */
-	CANDELA(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "cd";
-		}
-	},
-	
-	/** Thermodynamic Temperature */
-	KELVIN(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "K";
-		}
-	},
-	
-	/** Mass */
-	KILOGRAM(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "g";
-		}
-	},
-	
-	/** Distance */
-	METER(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "m";
-		}
-	},
-	
-	/** Substance */
-	MOLE(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "mol";
-		}
-	},
-	
-	/** Time */
-	SECOND(BigDecimal.ZERO){
-		@Override
-		public String symbol() {
-			return "s";
-		}
-	};
-	
+public abstract class SIUnit implements IUnit{
 	/**
 	 * Primary frequency standard in which the photon absorption by transitions between
 	 * the two hyperfine ground states of cesium-133 atoms. Also known as the Cesium Standard.
@@ -139,10 +84,145 @@ public enum SIUnit implements IUnit{
 	 */
 	final static BigDecimal LUMINOUS_EFFICACY = new BigDecimal("683");
 	
-	private @Getter @Setter BigDecimal value;
+	/** Electric Current */
+	static class Ampere extends SIUnit{
+		public Ampere(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "A";
+		}
+
+		@Override
+		public String name() {
+			return "Ampere";
+		}
+	}
 	
-	private SIUnit(BigDecimal value) {
-		this.setValue(value);
+	/** Luminous Intensity */
+	static class Candela extends SIUnit{
+		public Candela(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "cd";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	/** Thermodynamic Temperature */
+	static class Kelvin extends SIUnit{
+		public Kelvin(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "K";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	/** Mass */
+	static class Gram extends SIUnit{
+		public Gram(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "g";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	/** Distance */
+	static class Meter extends SIUnit{
+		public Meter(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "m";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	/** Substance */
+	static class Mole extends SIUnit{
+		public Mole(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "mol";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	/** Time */
+	static class Second extends SIUnit{
+		public Second(int order) {
+			super(order);
+		}
+		
+		@Override
+		public String symbol() {
+			return "s";
+		}
+
+		@Override
+		public String name() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+	
+	private @Getter(AccessLevel.PROTECTED) int order;
+	
+	private SIUnit(int order) {
+		this.setOrder(order);
+	}
+	
+	/**
+	 * 
+	 * @param order
+	 * @since 0.0.10
+	 */
+	private void setOrder(int order) {
+		if(order == 0)throw new IllegalArgumentException("Order cannot be set to zero");
+		this.order = order;
 	}
 	
 	/**
@@ -167,7 +247,7 @@ public enum SIUnit implements IUnit{
 	 * @since 0.0.9
 	 */
 	@Override
-	public String symbol() {
+	public SIUnit squared() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -176,7 +256,7 @@ public enum SIUnit implements IUnit{
 	 * @since 0.0.9
 	 */
 	@Override
-	public IUnit squared() {
+	public SIUnit cubed() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -185,7 +265,7 @@ public enum SIUnit implements IUnit{
 	 * @since 0.0.9
 	 */
 	@Override
-	public IUnit cubed() {
+	public SIUnit pow(int exponent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -194,16 +274,7 @@ public enum SIUnit implements IUnit{
 	 * @since 0.0.9
 	 */
 	@Override
-	public IUnit pow(int exponent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @since 0.0.9
-	 */
-	@Override
-	public IUnit inverse() {
+	public SIUnit inverse() {
 		// TODO Auto-generated method stub
 		return null;
 	}
