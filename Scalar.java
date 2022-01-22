@@ -15,7 +15,7 @@ import lombok.Setter;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.3
+ * @version 0.0.5
  */
 public class Scalar extends BigDecimal implements IScalar{
 	/**
@@ -30,16 +30,17 @@ public class Scalar extends BigDecimal implements IScalar{
 	 * quantity.
 	 * 
 	 * @param value The scalar quantity.
+	 * @param units The scalar units.
+	 * @since 0.0.5
 	 */
-	public Scalar(String value) {
+	public Scalar(String value, IUnit units) {
 		super(value);
+		this.setUnits(units);
 	}
 
 	@Builder
 	private static Scalar buildScalar(String value, IUnit units) {
-		Scalar scalar = new Scalar(value);
-		scalar.setUnits(units);
-		return scalar;
+		return new Scalar(value, units);
 	}
 
 	/**
@@ -230,7 +231,8 @@ public class Scalar extends BigDecimal implements IScalar{
 
 	@Override
 	public Scalar pow(int n, MathContext mc) {
-		return new Scalar(super.pow(n, mc).toString());
+		// TODO Auto-generated method stub
+		return new Scalar(super.pow(n, mc).toString(), null);
 	}
 
 
@@ -239,7 +241,7 @@ public class Scalar extends BigDecimal implements IScalar{
 	 */
 	@Override
 	public Scalar abs() {
-		return new Scalar(super.abs().toString());
+		return new Scalar(super.abs().toString(), this.getUnits());
 	}
 
 
@@ -248,7 +250,7 @@ public class Scalar extends BigDecimal implements IScalar{
 	 */
 	@Override
 	public Scalar abs(MathContext mc) {
-		return new Scalar(super.abs(mc).toString());
+		return new Scalar(super.abs(mc).toString(), this.getUnits());
 	}
 
 
