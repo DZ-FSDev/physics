@@ -20,7 +20,6 @@ package com.dz_fs_dev.physics;
 
 import java.math.BigDecimal;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 
 /**
@@ -30,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.10
+ * @version 0.0.11
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -53,28 +52,28 @@ public abstract class SIUnit implements IUnit{
 	 * <br>
 	 * <p>Measured in Joule seconds. 
 	 */
-	final static BigDecimal PLANCK = new BigDecimal("6.62607015e−34");
+	final static BigDecimal PLANCK = new BigDecimal("6.62607015e-34");
 	
 	/**
 	 * The magnitude of electric charge carried by a single proton or, single electron.
 	 * <br>
 	 * <p>Measured in Coulombs. 
 	 */
-	final static BigDecimal ELEMENTARY_CHARGE = new BigDecimal("1.602176634e−19");
+	final static BigDecimal ELEMENTARY_CHARGE = new BigDecimal("1.602176634e-19");
 	
 	/**
 	 * Relates the average relative kinetic energy of particles with the thermodynamic temperature of gases.
 	 * <br>
 	 * <p>Measured in Joules per Kelvin. 
 	 */
-	final static BigDecimal BOLTZMANN = new BigDecimal("1.380649e−23");
+	final static BigDecimal BOLTZMANN = new BigDecimal("1.380649e-23");
 	
 	/**
 	 * Relates the number of particles with the amount of substance in said sample.
 	 * <br>
 	 * <p>Measured in Mole<sup>-1</sup>. 
 	 */
-	final static BigDecimal AVAGADRO = new BigDecimal("6.02214076e23");
+	final static BigDecimal AVAGADRO = new BigDecimal("6.02214076e+23");
 	
 	/**
 	 * A measure of how well a light source producing monochromatic 540e<sup>12</sup> Hz radiation
@@ -99,6 +98,11 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Ampere";
 		}
+
+		@Override
+		public Ampere squared() {
+			return new Ampere(this.getOrder() * 2);
+		}
 	}
 	
 	/** Luminous Intensity */
@@ -114,8 +118,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Candela";
+		}
+
+		@Override
+		public Candela squared() {
+			return new Candela(this.getOrder() * 2);
 		}
 	}
 	
@@ -132,8 +140,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Kelvin";
+		}
+
+		@Override
+		public Kelvin squared() {
+			return new Kelvin(this.getOrder() * 2);
 		}
 	}
 	
@@ -150,8 +162,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Gram";
+		}
+
+		@Override
+		public Gram squared() {
+			return new Gram(this.getOrder() * 2);
 		}
 	}
 	
@@ -168,8 +184,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Meter";
+		}
+
+		@Override
+		public Meter squared() {
+			return new Meter(this.getOrder() * 2);
 		}
 	}
 	
@@ -186,8 +206,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Mole";
+		}
+
+		@Override
+		public Mole squared() {
+			return new Mole(this.getOrder() * 2);
 		}
 	}
 	
@@ -204,23 +228,18 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Second";
+		}
+
+		@Override
+		public Second squared() {
+			return new Second(this.getOrder() * 2);
 		}
 	}
 	
-	private @Getter(AccessLevel.PROTECTED) int order;
+	private @Getter final int order;
 	
 	private SIUnit(int order) {
-		this.setOrder(order);
-	}
-	
-	/**
-	 * 
-	 * @param order
-	 * @since 0.0.10
-	 */
-	private void setOrder(int order) {
 		if(order == 0)throw new IllegalArgumentException("Order cannot be set to zero");
 		this.order = order;
 	}
@@ -244,13 +263,12 @@ public abstract class SIUnit implements IUnit{
 	}
 
 	/**
-	 * @since 0.0.9
+	 * Returns a new instance of this SI Unit resulting for a square operation.
+	 * 
+	 * @since 0.0.11
 	 */
 	@Override
-	public SIUnit squared() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract SIUnit squared();
 
 	/**
 	 * @since 0.0.9
