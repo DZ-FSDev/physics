@@ -9,7 +9,7 @@ import lombok.Setter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.3
+ * @version 0.0.4
  */
 public abstract class DerivedUnit implements IUnit{
 	static final class Newton extends DerivedUnit {
@@ -30,9 +30,17 @@ public abstract class DerivedUnit implements IUnit{
 	}
 
 	private @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) SIUnit[] constituents;
+	
+	private final int order;
 
 	private DerivedUnit(SIUnit[] constituents) {
 		this.setConstituents(constituents);
+		order = 1;
+	}
+	
+	@Override
+	public int getOrder() {
+		return this.order;
 	}
 
 	@Override
