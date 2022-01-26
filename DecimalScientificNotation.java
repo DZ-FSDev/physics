@@ -1,5 +1,6 @@
 package com.dz_fs_dev.physics;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.Getter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.3
  */
 public enum DecimalScientificNotation implements IScientificNotation{
 	MEGA ("M", "mega", 6),
@@ -70,9 +71,23 @@ public enum DecimalScientificNotation implements IScientificNotation{
 	/**
 	 * {@inheritDoc}
 	 * The prefixes will assume a decimal number system.
+	 * @since 0.0.2
 	 */
 	@Override
 	public BigInteger base() {
 		return BigInteger.TEN;
+	}
+	
+	/**
+	 * Returns the corresponding DecimalScientificNotation given a specified
+	 * BigDecimal value. 
+	 * 
+	 * @param value The specified BigDecimal value.
+	 * @return The corresponding DecimalScientificNotation.
+	 * @since 0.0.3
+	 */
+	static DecimalScientificNotation valueOfGiven(BigDecimal value) {
+		// TODO binary search
+		return DecimalScientificNotation.values()[0];
 	}
 }
