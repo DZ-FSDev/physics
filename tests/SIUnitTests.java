@@ -33,25 +33,27 @@ class SIUnitTests {
 
 	@Test
 	void allSIUnits_nonDefaulOrder_initializesOrder() {
-		assertAll("allSIUnits_nonDefaulOrder_initializesOrder",
-			() -> assertEquals(new SIUnit.Ampere(2).getOrder(), 2, "Ampere"),
-			() -> assertEquals(new SIUnit.Candela(2).getOrder(), 2, "Candela"),
-			() -> assertEquals(new SIUnit.Gram(2).getOrder(), 2, "Gram"),
-			() -> assertEquals(new SIUnit.Kelvin(2).getOrder(), 2, "Kelvin"),
-			() -> assertEquals(new SIUnit.Meter(2).getOrder(), 2, "Meter"),
-			() -> assertEquals(new SIUnit.Mole(2).getOrder(), 2, "Mole"),
-			() -> assertEquals(new SIUnit.Second(2).getOrder(), 2, "Second")
-		);
+		assertAll(new Throwable().getStackTrace()[0].getMethodName(),
+				() -> assertEquals(new SIUnit.Ampere(2).getOrder(), 2, "Ampere"),
+				() -> assertEquals(new SIUnit.Candela(2).getOrder(), 2, "Candela"),
+				() -> assertEquals(new SIUnit.Gram(2).getOrder(), 2, "Gram"),
+				() -> assertEquals(new SIUnit.Kelvin(2).getOrder(), 2, "Kelvin"),
+				() -> assertEquals(new SIUnit.Meter(2).getOrder(), 2, "Meter"),
+				() -> assertEquals(new SIUnit.Mole(2).getOrder(), 2, "Mole"),
+				() -> assertEquals(new SIUnit.Second(2).getOrder(), 2, "Second")
+				);
 	}
 
 	@Test
 	void squared_doublesOrder() {
-		assertEquals(new SIUnit.Ampere(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Candela(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Gram(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Kelvin(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Meter(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Mole(2).squared().getOrder(), 4);
-		assertEquals(new SIUnit.Second(2).squared().getOrder(), 4);
+		assertAll(new Throwable().getStackTrace()[0].getMethodName(),
+				() -> assertEquals(new SIUnit.Ampere(2).squared().getOrder(), 4, "Ampere"),
+				() -> assertEquals(new SIUnit.Candela(2).squared().getOrder(), 4, "Candela"),
+				() -> assertEquals(new SIUnit.Gram(2).squared().getOrder(), 4, "Gram"),
+				() -> assertEquals(new SIUnit.Kelvin(2).squared().getOrder(), 4, "Kelvin"),
+				() -> assertEquals(new SIUnit.Meter(2).squared().getOrder(), 4, "Meter"),
+				() -> assertEquals(new SIUnit.Mole(2).squared().getOrder(), 4, "Mole"),
+				() -> assertEquals(new SIUnit.Second(2).squared().getOrder(), 4, "Second")
+				);
 	}
 }
