@@ -33,13 +33,15 @@ class SIUnitTests {
 
 	@Test
 	void allSIUnits_nonDefaulOrder_initializesOrder() {
-		assertEquals(new SIUnit.Ampere(2).getOrder(), 2);
-		assertEquals(new SIUnit.Candela(2).getOrder(), 2);
-		assertEquals(new SIUnit.Gram(2).getOrder(), 2);
-		assertEquals(new SIUnit.Kelvin(2).getOrder(), 2);
-		assertEquals(new SIUnit.Meter(2).getOrder(), 2);
-		assertEquals(new SIUnit.Mole(2).getOrder(), 2);
-		assertEquals(new SIUnit.Second(2).getOrder(), 2);
+		assertAll("allSIUnits_nonDefaulOrder_initializesOrder",
+			() -> assertEquals(new SIUnit.Ampere(2).getOrder(), 2, "Ampere"),
+			() -> assertEquals(new SIUnit.Candela(2).getOrder(), 2, "Candela"),
+			() -> assertEquals(new SIUnit.Gram(2).getOrder(), 2, "Gram"),
+			() -> assertEquals(new SIUnit.Kelvin(2).getOrder(), 2, "Kelvin"),
+			() -> assertEquals(new SIUnit.Meter(2).getOrder(), 2, "Meter"),
+			() -> assertEquals(new SIUnit.Mole(2).getOrder(), 2, "Mole"),
+			() -> assertEquals(new SIUnit.Second(2).getOrder(), 2, "Second")
+		);
 	}
 
 	@Test
