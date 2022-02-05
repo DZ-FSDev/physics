@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.11
+ * @version 0.0.12
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -103,6 +103,11 @@ public abstract class SIUnit implements IUnit{
 		public Ampere squared() {
 			return new Ampere(this.getOrder() * 2);
 		}
+
+		@Override
+		public IUnit cubed() {
+			return new Ampere(this.getOrder() * 3);
+		}
 	}
 	
 	/** Luminous Intensity */
@@ -124,6 +129,11 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public Candela squared() {
 			return new Candela(this.getOrder() * 2);
+		}
+
+		@Override
+		public IUnit cubed() {
+			return new Candela(this.getOrder() * 3);
 		}
 	}
 	
@@ -147,6 +157,11 @@ public abstract class SIUnit implements IUnit{
 		public Kelvin squared() {
 			return new Kelvin(this.getOrder() * 2);
 		}
+
+		@Override
+		public IUnit cubed() {
+			return new Kelvin(this.getOrder() * 3);
+		}
 	}
 	
 	/** Mass */
@@ -168,6 +183,11 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public Gram squared() {
 			return new Gram(this.getOrder() * 2);
+		}
+
+		@Override
+		public IUnit cubed() {
+			return new Gram(this.getOrder() * 3);
 		}
 	}
 	
@@ -191,6 +211,11 @@ public abstract class SIUnit implements IUnit{
 		public Meter squared() {
 			return new Meter(this.getOrder() * 2);
 		}
+
+		@Override
+		public IUnit cubed() {
+			return new Meter(this.getOrder() * 3);
+		}
 	}
 	
 	/** Substance */
@@ -213,6 +238,11 @@ public abstract class SIUnit implements IUnit{
 		public Mole squared() {
 			return new Mole(this.getOrder() * 2);
 		}
+
+		@Override
+		public IUnit cubed() {
+			return new Mole(this.getOrder() * 3);
+		}
 	}
 	
 	/** Time */
@@ -234,6 +264,11 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public Second squared() {
 			return new Second(this.getOrder() * 2);
+		}
+
+		@Override
+		public IUnit cubed() {
+			return new Second(this.getOrder() * 3);
 		}
 	}
 	
@@ -258,23 +293,6 @@ public abstract class SIUnit implements IUnit{
 	 */
 	@Override
 	public IUnit multiplyBy(IUnit o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * Returns a new instance of this SI Unit resulting for a square operation.
-	 * 
-	 * @since 0.0.11
-	 */
-	@Override
-	public abstract SIUnit squared();
-
-	/**
-	 * @since 0.0.9
-	 */
-	@Override
-	public SIUnit cubed() {
 		// TODO Auto-generated method stub
 		return null;
 	}
