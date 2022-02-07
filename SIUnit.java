@@ -18,6 +18,7 @@
  */
 package com.dz_fs_dev.physics;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 import lombok.Getter;
@@ -29,7 +30,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.12
+ * @version 0.0.13
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -307,11 +308,31 @@ public abstract class SIUnit implements IUnit{
 	}
 
 	/**
-	 * @since 0.0.9
+	 * @since 0.0.13
 	 */
 	@Override
 	public SIUnit inverse() {
-		// TODO Auto-generated method stub
+		try {
+			return this.getClass().getConstructor(new Class[] {Integer.TYPE}).newInstance(-this.order);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }
