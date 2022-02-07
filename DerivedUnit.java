@@ -1,5 +1,7 @@
 package com.dz_fs_dev.physics;
 
+import java.lang.reflect.InvocationTargetException;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,7 @@ import lombok.Setter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.4
+ * @version 0.0.5
  */
 public abstract class DerivedUnit implements IUnit{
 	static final class Newton extends DerivedUnit {
@@ -73,9 +75,32 @@ public abstract class DerivedUnit implements IUnit{
 		return null;
 	}
 
+	/**
+	 * @since 0.05
+	 */
 	@Override
-	public IUnit inverse() {
-		// TODO Auto-generated method stub
+	public DerivedUnit inverse() {
+		try {
+			return this.getClass().getConstructor(new Class[] {Integer.TYPE}).newInstance(-this.order);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }
