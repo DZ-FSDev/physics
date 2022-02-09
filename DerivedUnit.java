@@ -11,9 +11,12 @@ import lombok.Setter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.5
+ * @version 0.0.6
  */
 public abstract class DerivedUnit implements IUnit{
+	/**
+	 * @since 0.0.5
+	 */
 	static final class Newton extends DerivedUnit {
 		public Newton() {
 			super(new SIUnit[] {new SIUnit.Meter(1), new SIUnit.Gram(1),
@@ -28,6 +31,26 @@ public abstract class DerivedUnit implements IUnit{
 		@Override
 		public String name() {
 			return "Newton";
+		}
+	}
+	
+	/**
+	 * @since 0.0.6
+	 */
+	static final class Volt extends DerivedUnit {
+		public Volt() {
+			super(new SIUnit[] {new SIUnit.Gram(3), new SIUnit.Meter(1), 
+					new SIUnit.Ampere(-1), new SIUnit.Second(-3)});
+		}
+
+		@Override
+		public String symbol() {
+			return "V";
+		}
+
+		@Override
+		public String name() {
+			return "Volt";
 		}
 	}
 
