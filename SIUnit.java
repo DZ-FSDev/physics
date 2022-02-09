@@ -18,7 +18,6 @@
  */
 package com.dz_fs_dev.physics;
 
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 import lombok.Getter;
@@ -30,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.13
+ * @version 0.0.15
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -106,8 +105,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Ampere cubed() {
 			return new Ampere(this.getOrder() * 3);
+		}
+
+		@Override
+		public Ampere inverse() {
+			return new Ampere(this.getOrder() * -1);
 		}
 	}
 	
@@ -133,8 +137,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Candela cubed() {
 			return new Candela(this.getOrder() * 3);
+		}
+
+		@Override
+		public Candela inverse() {
+			return new Candela(this.getOrder() * -1);
 		}
 	}
 	
@@ -160,8 +169,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Kelvin cubed() {
 			return new Kelvin(this.getOrder() * 3);
+		}
+
+		@Override
+		public Kelvin inverse() {
+			return new Kelvin(this.getOrder() * -1);
 		}
 	}
 	
@@ -187,8 +201,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Gram cubed() {
 			return new Gram(this.getOrder() * 3);
+		}
+
+		@Override
+		public Gram inverse() {
+			return new Gram(this.getOrder() * -1);
 		}
 	}
 	
@@ -214,8 +233,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Meter cubed() {
 			return new Meter(this.getOrder() * 3);
+		}
+
+		@Override
+		public Meter inverse() {
+			return new Meter(this.getOrder() * -1);
 		}
 	}
 	
@@ -241,8 +265,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Mole cubed() {
 			return new Mole(this.getOrder() * 3);
+		}
+
+		@Override
+		public Mole inverse() {
+			return new Mole(this.getOrder() * -1);
 		}
 	}
 	
@@ -268,8 +297,13 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public IUnit cubed() {
+		public Second cubed() {
 			return new Second(this.getOrder() * 3);
+		}
+
+		@Override
+		public Second inverse() {
+			return new Second(this.getOrder() * -1);
 		}
 	}
 	
@@ -304,35 +338,6 @@ public abstract class SIUnit implements IUnit{
 	@Override
 	public SIUnit pow(int exponent) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @since 0.0.13
-	 */
-	@Override
-	public SIUnit inverse() {
-		try {
-			return this.getClass().getConstructor(new Class[] {Integer.TYPE}).newInstance(-this.order);
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return null;
 	}
 }
