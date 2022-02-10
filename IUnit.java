@@ -26,7 +26,7 @@ package com.dz_fs_dev.physics;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.7
+ * @version 0.0.8
  */
 public interface IUnit {
 	/**
@@ -44,8 +44,15 @@ public interface IUnit {
 	public String symbol();
 	
 	/**
+	 * Returns the order of this unit of measure.
+	 * 
+	 * @return The order of this unit of measure.
+	 */
+	public int getOrder();
+	
+	/**
 	 * Returns a new IUnit corresponding to if this IUnit was divided by
-	 * another IUnit. 
+	 * another IUnit.
 	 * 
 	 * @param o The denominating IUnit.
 	 * @return The resulting quotient IUnit.
