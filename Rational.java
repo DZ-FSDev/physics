@@ -24,15 +24,15 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.1
+ * @version 0.0.2
  * @since 17.0.1
  */
-public class Rational extends Number{
+public class Rational extends Number implements Comparable<Rational>{
 	/**
 	 * @since 0.0.1
 	 */
 	private static final long serialVersionUID = 957014047269914354L;
-
+	
 	@Override
 	public int intValue() {
 		// TODO Auto-generated method stub
@@ -53,6 +53,12 @@ public class Rational extends Number{
 
 	@Override
 	public double doubleValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int compareTo(Rational o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
