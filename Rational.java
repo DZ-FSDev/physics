@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.3
+ * @version 0.0.4
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -32,6 +32,20 @@ public class Rational extends Number implements Comparable<Rational>{
 	 * @since 0.0.1
 	 */
 	private static final long serialVersionUID = 957014047269914354L;
+	
+	private final int denominator;
+	private final int numerator;
+	
+	/**
+	 * Initializes a new instance of a Rational number.
+	 * 
+	 * @param denominator
+	 * @param numerator
+	 */
+	public Rational(int denominator, int numerator) {
+		this.denominator = denominator;
+		this.numerator = numerator;
+	}
 
 	public Rational add(Rational augend) {
 		// TODO Auto-generated method stub
