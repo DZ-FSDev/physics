@@ -102,6 +102,26 @@ public class Rational extends Number implements Comparable<Rational>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	private static long gcd(long a, long b) {
+		
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	private static long gcd(long a, long b) {
+		
+	}
 
 	@Override
 	public int compareTo(Rational o) {
