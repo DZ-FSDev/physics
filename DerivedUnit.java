@@ -1,7 +1,5 @@
 package com.dz_fs_dev.physics;
 
-import java.lang.reflect.InvocationTargetException;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,13 +9,13 @@ import lombok.Setter;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.6
+ * @version 0.0.7
  */
 public abstract class DerivedUnit implements IUnit{
 	/**
-	 * @since 0.0.5
+	 * @since 0.0.7
 	 */
-	static final class Newton extends DerivedUnit {
+	static final class Newton extends DerivedUnit implements IPowable<Newton>{
 		public Newton() {
 			super(new SIUnit[] {new SIUnit.Meter(1), new SIUnit.Gram(1),
 					new SIUnit.Second(-2)});
@@ -32,12 +30,24 @@ public abstract class DerivedUnit implements IUnit{
 		public String name() {
 			return "Newton";
 		}
+
+		@Override
+		public Newton pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Newton pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/**
-	 * @since 0.0.6
+	 * @since 0.0.7
 	 */
-	static final class Volt extends DerivedUnit {
+	static final class Volt extends DerivedUnit implements IPowable<Volt> {
 		public Volt() {
 			super(new SIUnit[] {new SIUnit.Gram(3), new SIUnit.Meter(1), 
 					new SIUnit.Ampere(-1), new SIUnit.Second(-3)});
@@ -51,6 +61,18 @@ public abstract class DerivedUnit implements IUnit{
 		@Override
 		public String name() {
 			return "Volt";
+		}
+
+		@Override
+		public Volt pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Volt pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 
@@ -77,53 +99,6 @@ public abstract class DerivedUnit implements IUnit{
 	@Override
 	public IUnit multiplyBy(IUnit o) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IUnit squared() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IUnit cubed() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IUnit pow(int exponent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @since 0.05
-	 */
-	@Override
-	public DerivedUnit inverse() {
-		try {
-			return this.getClass().getConstructor(new Class[] {Integer.TYPE}).newInstance(-this.order);
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return null;
 	}
 }
