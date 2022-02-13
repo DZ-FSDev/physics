@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.15
+ * @version 0.0.17
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -98,21 +98,6 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Ampere";
 		}
-
-		@Override
-		public Ampere squared() {
-			return new Ampere(this.getOrder() * 2);
-		}
-
-		@Override
-		public Ampere cubed() {
-			return new Ampere(this.getOrder() * 3);
-		}
-
-		@Override
-		public Ampere inverse() {
-			return new Ampere(this.getOrder() * -1);
-		}
 	}
 	
 	/** Luminous Intensity */
@@ -129,21 +114,6 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public String name() {
 			return "Candela";
-		}
-
-		@Override
-		public Candela squared() {
-			return new Candela(this.getOrder() * 2);
-		}
-
-		@Override
-		public Candela cubed() {
-			return new Candela(this.getOrder() * 3);
-		}
-
-		@Override
-		public Candela inverse() {
-			return new Candela(this.getOrder() * -1);
 		}
 	}
 	
@@ -162,21 +132,6 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Kelvin";
 		}
-
-		@Override
-		public Kelvin squared() {
-			return new Kelvin(this.getOrder() * 2);
-		}
-
-		@Override
-		public Kelvin cubed() {
-			return new Kelvin(this.getOrder() * 3);
-		}
-
-		@Override
-		public Kelvin inverse() {
-			return new Kelvin(this.getOrder() * -1);
-		}
 	}
 	
 	/** Mass */
@@ -193,21 +148,6 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public String name() {
 			return "Gram";
-		}
-
-		@Override
-		public Gram squared() {
-			return new Gram(this.getOrder() * 2);
-		}
-
-		@Override
-		public Gram cubed() {
-			return new Gram(this.getOrder() * 3);
-		}
-
-		@Override
-		public Gram inverse() {
-			return new Gram(this.getOrder() * -1);
 		}
 	}
 	
@@ -226,21 +166,6 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Meter";
 		}
-
-		@Override
-		public Meter squared() {
-			return new Meter(this.getOrder() * 2);
-		}
-
-		@Override
-		public Meter cubed() {
-			return new Meter(this.getOrder() * 3);
-		}
-
-		@Override
-		public Meter inverse() {
-			return new Meter(this.getOrder() * -1);
-		}
 	}
 	
 	/** Substance */
@@ -258,25 +183,10 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Mole";
 		}
-
-		@Override
-		public Mole squared() {
-			return new Mole(this.getOrder() * 2);
-		}
-
-		@Override
-		public Mole cubed() {
-			return new Mole(this.getOrder() * 3);
-		}
-
-		@Override
-		public Mole inverse() {
-			return new Mole(this.getOrder() * -1);
-		}
 	}
 	
 	/** Time */
-	static class Second extends SIUnit{
+	static class Second extends SIUnit implements IPowable<Second>{
 		public Second(int order) {
 			super(order);
 		}
@@ -292,18 +202,15 @@ public abstract class SIUnit implements IUnit{
 		}
 
 		@Override
-		public Second squared() {
-			return new Second(this.getOrder() * 2);
+		public Second pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 		@Override
-		public Second cubed() {
-			return new Second(this.getOrder() * 3);
-		}
-
-		@Override
-		public Second inverse() {
-			return new Second(this.getOrder() * -1);
+		public Second pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 	
@@ -328,15 +235,6 @@ public abstract class SIUnit implements IUnit{
 	 */
 	@Override
 	public IUnit multiplyBy(IUnit o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @since 0.0.9
-	 */
-	@Override
-	public SIUnit pow(int exponent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
