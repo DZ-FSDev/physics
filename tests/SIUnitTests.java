@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.12
+ * @version 0.0.13
  */
 class SIUnitTests {
 
@@ -61,12 +61,12 @@ class SIUnitTests {
 	void allSIUnits_invert_negatesOrder() {
 		assertAll(new Throwable().getStackTrace()[0].getMethodName(),
 				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Ampere"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Candela"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Gram"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Kelvin"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Meter"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Mole"),
-				() -> assertEquals(-2, new SIUnit.Ampere(2).inverse().getOrder(), "Second")
+				() -> assertEquals(-2, new SIUnit.Candela(2).inverse().getOrder(), "Candela"),
+				() -> assertEquals(-2, new SIUnit.Gram(2).inverse().getOrder(), "Gram"),
+				() -> assertEquals(-2, new SIUnit.Kelvin(2).inverse().getOrder(), "Kelvin"),
+				() -> assertEquals(-2, new SIUnit.Meter(2).inverse().getOrder(), "Meter"),
+				() -> assertEquals(-2, new SIUnit.Mole(2).inverse().getOrder(), "Mole"),
+				() -> assertEquals(-2, new SIUnit.Second(2).inverse().getOrder(), "Second")
 				);
 	}
 }
