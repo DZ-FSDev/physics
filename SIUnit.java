@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.17
+ * @version 0.0.18
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -84,7 +84,7 @@ public abstract class SIUnit implements IUnit{
 	final static BigDecimal LUMINOUS_EFFICACY = new BigDecimal("683");
 	
 	/** Electric Current */
-	static class Ampere extends SIUnit{
+	static class Ampere extends SIUnit implements IPowable<Ampere>{
 		public Ampere(int order) {
 			super(order);
 		}
@@ -98,10 +98,22 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Ampere";
 		}
+
+		@Override
+		public Ampere pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Ampere pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/** Luminous Intensity */
-	static class Candela extends SIUnit{
+	static class Candela extends SIUnit implements IPowable<Candela>{
 		public Candela(int order) {
 			super(order);
 		}
@@ -115,10 +127,22 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Candela";
 		}
+
+		@Override
+		public Candela pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Candela pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/** Thermodynamic Temperature */
-	static class Kelvin extends SIUnit{
+	static class Kelvin extends SIUnit implements IPowable<Kelvin>{
 		public Kelvin(int order) {
 			super(order);
 		}
@@ -132,10 +156,22 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Kelvin";
 		}
+
+		@Override
+		public Kelvin pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Kelvin pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/** Mass */
-	static class Gram extends SIUnit{
+	static class Gram extends SIUnit implements IPowable<Gram>{
 		public Gram(int order) {
 			super(order);
 		}
@@ -149,10 +185,22 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Gram";
 		}
+
+		@Override
+		public Gram pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Gram pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/** Distance */
-	static class Meter extends SIUnit{
+	static class Meter extends SIUnit implements IPowable<Meter>{
 		public Meter(int order) {
 			super(order);
 		}
@@ -166,10 +214,22 @@ public abstract class SIUnit implements IUnit{
 		public String name() {
 			return "Meter";
 		}
+
+		@Override
+		public Meter pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Meter pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 	
 	/** Substance */
-	static class Mole extends SIUnit{
+	static class Mole extends SIUnit implements IPowable<Mole>{
 		public Mole(int order) {
 			super(order);
 		}
@@ -182,6 +242,18 @@ public abstract class SIUnit implements IUnit{
 		@Override
 		public String name() {
 			return "Mole";
+		}
+
+		@Override
+		public Mole pow(int exponent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Mole pow(Rational exponent) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 	
