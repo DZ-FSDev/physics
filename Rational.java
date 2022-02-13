@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.5
+ * @version 0.0.6
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -104,23 +104,30 @@ public class Rational extends Number implements Comparable<Rational>{
 	}
 	
 	/**
+	 * Finds the lowest common multiple of two numbers.
 	 * 
-	 * @param a
-	 * @param b
-	 * @return
+	 * @param a The first number.
+	 * @param b The second number.
+	 * @return The lowest common multiple of the two number.
 	 */
-	private static long gcd(long a, long b) {
-		
+	private static long lcm(long a, long b) {
+		return 0;
 	}
 	
 	/**
+	 * Recursively finds the greatest common divisor using Euclid's Algorithm
+	 * for two numbers.
 	 * 
-	 * @param a
-	 * @param b
-	 * @return
+	 * @param a The first number.
+	 * @param b The second number.
+	 * @return The greatest common divisor of the two numbers.
+	 * @since 0.0.6
 	 */
 	private static long gcd(long a, long b) {
-		
+		if (b == 0) {
+	        return a;
+	    }
+	    return gcd(b, a % b);
 	}
 
 	@Override
