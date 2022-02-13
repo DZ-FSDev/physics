@@ -6,17 +6,21 @@ package com.dz_fs_dev.physics;
  * 
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.3
  * @param <T> The type which should contain the ability to be exponentiated.
  */
 public interface IPowable<T> {
 	public default T squared() {
 		return this.pow(2);
+	}
+	
+	public default T cubed() {
+		return this.pow(3);
+	}
+	
+	public default T inverse() {
+		return this.pow(-1);
 	};
-	
-	public T cubed();
-	
-	public T inverse();
 	
 	/**
 	 * Returns new units that represent the specified exponentiation of this
