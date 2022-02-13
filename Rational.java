@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.6
+ * @version 0.0.7
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -108,10 +108,14 @@ public class Rational extends Number implements Comparable<Rational>{
 	 * 
 	 * @param a The first number.
 	 * @param b The second number.
-	 * @return The lowest common multiple of the two number.
+	 * @return The lowest common multiple of the two numbers.
+	 * @since 0.0.7
 	 */
 	private static long lcm(long a, long b) {
-		return 0;
+		if (a == 0 || b == 0)
+	        return 0;
+	    else
+	        return Math.abs(a * b) / gcd(a, b);
 	}
 	
 	/**
