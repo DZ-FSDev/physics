@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.9
+ * @version 0.0.10
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -48,13 +48,19 @@ public class Rational extends Number implements Comparable<Rational>{
 	
 	/**
 	 * Initializes a new instance of a Rational number given an integral
-	 * numerator and denominator.
+	 * numerator and denominator. Denominators will be normalized positive.
 	 * 
 	 * @param numerator The numerator of this rational number.
 	 * @param denominator The denominator of this rational number.
-	 * @since 0.0.5
+	 * @since 0.0.10
 	 */
 	public Rational(long numerator, long denominator) {
+		if(denominator == 0)throw new IllegalArgumentException("Denominator cannot be zero!");
+		if(denominator < 0) {
+			numerator *= -1;
+			denominator *= -1;
+		}
+		
 		this.denominator = denominator;
 		this.numerator = numerator;
 	}
