@@ -30,7 +30,7 @@ import org.junit.jupiter.params.provider.CsvSource;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.3
  */
 class RationalTest {
 	@ParameterizedTest
@@ -60,7 +60,11 @@ class RationalTest {
 	@CsvSource({
 		"-1,-1,1,1",
 		"0,1,0,1",
-		"1,-1,-1,1"
+		"1,-1,-1,1",
+		"10,5,2,1",
+		"5,10,1,2",
+		"-10,5,-2,1",
+		"5,10,1,2"
 	})
 	void constructor2_initializes(long numerator, long denominator, long expectedNumerator, long expectedDenominator) throws NoSuchFieldException, SecurityException {
 		// Arrange
