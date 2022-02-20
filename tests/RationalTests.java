@@ -82,4 +82,23 @@ class RationalTest {
 				() -> assertEquals(expectedDenominator, denominatorField.get(target))
 				);
 	}
+	
+	@ParameterizedTest
+	@CsvSource({
+		"-1,1,-1",
+		"1,1,1",
+		"0,1,0",
+		"1,2,0.5",
+		"5,2,2.5"
+	})
+	void doubleValue_returns(long numerator, long denominator, double expected) {
+		// Arrange
+		Rational target = new Rational(numerator, denominator);
+		
+		// Act
+		double actual = target.doubleValue();
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
 }
