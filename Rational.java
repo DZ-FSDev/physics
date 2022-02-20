@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.7
+ * @version 0.0.8
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -79,28 +79,36 @@ public class Rational extends Number implements Comparable<Rational>{
 		return null;
 	}
 	
+	/**
+	 * @since 0.0.8
+	 */
 	@Override
 	public int intValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)(numerator / denominator);
 	}
 
+	/**
+	 * @since 0.0.8
+	 */
 	@Override
 	public long longValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return numerator / denominator;
 	}
 
+	/**
+	 * @since 0.0.8
+	 */
 	@Override
 	public float floatValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (float)numerator / denominator;
 	}
 
+	/**
+	 * @since 0.0.8
+	 */
 	@Override
 	public double doubleValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (double)numerator / denominator;
 	}
 	
 	/**
