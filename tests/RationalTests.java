@@ -30,7 +30,7 @@ import org.junit.jupiter.params.provider.CsvSource;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.4
+ * @version 0.0.5
  */
 class RationalTest {
 	@ParameterizedTest
@@ -117,6 +117,26 @@ class RationalTest {
 		
 		// Act
 		int actual = target.intValue();
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvSource({
+		"-1,1,-1",
+		"1,1,1",
+		"0,1,0",
+		"1,2,0",
+		"5,2,2",
+		"-7,2,-3"
+	})
+	void longValue_returns(long numerator, long denominator, long expected) {
+		// Arrange
+		Rational target = new Rational(numerator, denominator);
+		
+		// Act
+		long actual = target.longValue();
 		
 		// Assert
 		assertEquals(expected, actual);
