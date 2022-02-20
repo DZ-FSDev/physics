@@ -64,7 +64,8 @@ class RationalTest {
 		"10,5,2,1",
 		"5,10,1,2",
 		"-10,5,-2,1",
-		"5,10,1,2"
+		"5,10,1,2",
+		"0,2,0,1"
 	})
 	void constructor2_initializes(long numerator, long denominator, long expectedNumerator, long expectedDenominator) throws NoSuchFieldException, SecurityException {
 		// Arrange
@@ -80,6 +81,37 @@ class RationalTest {
 		assertAll(
 				() -> assertEquals(expectedNumerator, numeratorField.get(target)),
 				() -> assertEquals(expectedDenominator, denominatorField.get(target))
+				);
+	}
+	
+	@ParameterizedTest
+	@CsvSource({
+		"1,2,1,2,1,1",
+		"1,3,1,2,5,6",
+		"-1,2,1,2,0,1",
+		"-1,2,-1,3,-5,6",
+		"0,1,1,3,1,3",
+		"0,1,-1,3,-1,3"
+	})
+	void add_returns(long numeratorA, long denominatorA, long numeratorB, long denominatorB, long numeratorExpected, long denominatorExpected) throws NoSuchFieldException, SecurityException {
+		//Arrange
+		Rational a = new Rational(numeratorA, denominatorA);
+		Rational b = new Rational(numeratorB, denominatorB);
+		Field numeratorField = Rational.class.getDeclaredField("numerator");
+		Field denominatorField = Rational.class.getDeclaredField("denominator");
+		numeratorField.setAccessible(true);
+		denominatorField.setAccessible(true);
+		
+		// Act
+		Rational actual = a.add(b);
+		Rational reverseActual = b.add(a);
+		
+		// Assert
+		assertAll(
+				() -> assertEquals(numeratorExpected, numeratorField.get(actual),"actual numerator"),
+				() -> assertEquals(numeratorExpected, numeratorField.get(reverseActual),"reverse actual numerator"),
+				() -> assertEquals(denominatorExpected, denominatorField.get(actual),"actual denominator"),
+				() -> assertEquals(denominatorExpected, denominatorField.get(reverseActual),"reverse actual denominator")
 				);
 	}
 	
