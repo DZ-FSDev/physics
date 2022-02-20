@@ -30,9 +30,9 @@ import org.junit.jupiter.params.provider.CsvSource;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
-class RationalTests {
+class RationalTest {
 	@ParameterizedTest
 	@CsvSource({
 		"-1",
@@ -54,7 +54,28 @@ class RationalTests {
 				() -> assertEquals(value, numeratorField.get(target)),
 				() -> assertEquals(1L, denominatorField.get(target))
 				);
-		
 	}
 
+	@ParameterizedTest
+	@CsvSource({
+		"-1,-1,1,1",
+		"0,1,0,1",
+		"1,-1,-1,1"
+	})
+	void constructor2_initializes(long numerator, long denominator, long expectedNumerator, long expectedDenominator) throws NoSuchFieldException, SecurityException {
+		// Arrange
+		Field numeratorField = Rational.class.getDeclaredField("numerator");
+		Field denominatorField = Rational.class.getDeclaredField("denominator");
+		numeratorField.setAccessible(true);
+		denominatorField.setAccessible(true);
+		
+		// Act
+		Rational target = new Rational(numerator, denominator);
+		
+		// Assert
+		assertAll(
+				() -> assertEquals(expectedNumerator, numeratorField.get(target)),
+				() -> assertEquals(expectedDenominator, denominatorField.get(target))
+				);
+	}
 }
