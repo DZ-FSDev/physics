@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.12
+ * @version 0.0.14
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -52,7 +52,7 @@ public class Rational extends Number implements Comparable<Rational>{
 	 * 
 	 * @param numerator The numerator of this rational number.
 	 * @param denominator The denominator of this rational number.
-	 * @since 0.0.12
+	 * @since 0.0.13
 	 */
 	public Rational(long numerator, long denominator) {
 		if(denominator == 0)throw new IllegalArgumentException("Denominator cannot be zero!");
@@ -61,7 +61,7 @@ public class Rational extends Number implements Comparable<Rational>{
 			denominator *= -1;
 		}
 		
-		long gcd = numerator == 0 ? 1 : gcd(numerator, denominator);
+		long gcd = numerator == 0 ? denominator : Math.abs(gcd(numerator, denominator));
 		this.denominator = denominator / gcd;
 		this.numerator = numerator / gcd;
 	}
@@ -72,11 +72,18 @@ public class Rational extends Number implements Comparable<Rational>{
 	 * 
 	 * @param augend The other Rational to be added.
 	 * @return A new Rational which represents the result of addition.
-	 * @since 0.0.9
+	 * @since 0.0.14
 	 */
 	public Rational add(Rational augend) {
 		long lcm = lcm(this.denominator, augend.denominator);
 		long gcd = gcd(this.denominator, augend.denominator);
+		
+		if(this.numerator == 0) {
+			return augend;
+		}else if(augend.numerator == 0) {
+			return this;
+		}
+		
 		return new Rational(this.denominator / (this.numerator * gcd) +
 				augend.denominator / (augend.numerator*gcd), lcm);
 	}
