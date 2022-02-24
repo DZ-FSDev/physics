@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.14
+ * @version 0.0.15
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -85,12 +85,21 @@ public class Rational extends Number implements Comparable<Rational>{
 		}
 		
 		return new Rational(this.denominator / (this.numerator * gcd) +
-				augend.denominator / (augend.numerator*gcd), lcm);
+				augend.denominator / (augend.numerator * gcd), lcm);
 	}
 	
+	/**
+	 * Returns a new Rational which represents the result of subtraction from
+	 * this Rational, the subtrahend.
+	 * 
+	 * @param subtrahend The other Rational to be subtracted.
+	 * @return A new Rational which represents the result of subtraction.
+	 * @since 0.0.15
+	 */
 	public Rational subtract(Rational subtrahend) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rational(
+				this.numerator * subtrahend.denominator - subtrahend.numerator * this.denominator,
+				this.denominator * subtrahend.denominator);
 	}
 	
 	public Rational multiply(Rational multiplicand) {
