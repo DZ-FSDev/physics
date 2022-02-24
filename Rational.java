@@ -94,9 +94,18 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.denominator * subtrahend.denominator);
 	}
 	
+	/**
+	 * Returns a new Rational which represents the result of multiplication
+	 * between this Rational and the Multiplicand.
+	 * 
+	 * @param multiplicand The other Rational to be multiplied.
+	 * @return A new Rational which represents the result of multiplication.
+	 * @since 0.0.17
+	 */
 	public Rational multiply(Rational multiplicand) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rational(
+				this.numerator * multiplicand.numerator,
+				this.denominator * multiplicand.denominator);
 	}
 	
 	public Rational divide(Rational divisor) {
