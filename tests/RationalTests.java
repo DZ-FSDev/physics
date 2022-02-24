@@ -146,6 +146,37 @@ class RationalTest {
 	
 	@ParameterizedTest
 	@CsvSource({
+		"1,2,1,2,1,4",
+		"1,3,1,2,1,6",
+		"-1,2,1,2,-1,4",
+		"-1,2,-1,3,1,6",
+		"0,1,1,3,0,1",
+		"5,6,5,7,25,42"
+	})
+	void multiply_returns(long numeratorA, long denominatorA, long numeratorB, long denominatorB, long numeratorExpected, long denominatorExpected) throws NoSuchFieldException, SecurityException {
+		//Arrange
+		Rational a = new Rational(numeratorA, denominatorA);
+		Rational b = new Rational(numeratorB, denominatorB);
+		Field numeratorField = Rational.class.getDeclaredField("numerator");
+		Field denominatorField = Rational.class.getDeclaredField("denominator");
+		numeratorField.setAccessible(true);
+		denominatorField.setAccessible(true);
+		
+		// Act
+		Rational actual = a.multiply(b);
+		Rational reverseActual = b.multiply(a);
+		
+		// Assert
+		assertAll(
+				() -> assertEquals(numeratorExpected, numeratorField.get(actual),"actual numerator"),
+				() -> assertEquals(numeratorExpected, numeratorField.get(reverseActual),"reverse actual numerator"),
+				() -> assertEquals(denominatorExpected, denominatorField.get(actual),"actual denominator"),
+				() -> assertEquals(denominatorExpected, denominatorField.get(reverseActual),"reverse actual denominator")
+				);
+	}
+	
+	@ParameterizedTest
+	@CsvSource({
 		"-1,1,-1",
 		"1,1,1",
 		"0,1,0",
