@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.15
+ * @version 0.0.16
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -72,20 +72,12 @@ public class Rational extends Number implements Comparable<Rational>{
 	 * 
 	 * @param augend The other Rational to be added.
 	 * @return A new Rational which represents the result of addition.
-	 * @since 0.0.14
+	 * @since 0.0.16
 	 */
 	public Rational add(Rational augend) {
-		long lcm = lcm(this.denominator, augend.denominator);
-		long gcd = gcd(this.denominator, augend.denominator);
-		
-		if(this.numerator == 0) {
-			return augend;
-		}else if(augend.numerator == 0) {
-			return this;
-		}
-		
-		return new Rational(this.denominator / (this.numerator * gcd) +
-				augend.denominator / (augend.numerator * gcd), lcm);
+		return new Rational(
+				this.numerator * augend.denominator + augend.numerator * this.denominator,
+				this.denominator * augend.denominator);
 	}
 	
 	/**
