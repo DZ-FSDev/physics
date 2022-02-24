@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.16
+ * @version 0.0.18
  * @since 17.0.1
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -108,9 +108,18 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.denominator * multiplicand.denominator);
 	}
 	
+	/**
+	 * Returns a new Rational which represents the result of division
+	 * between this Rational and the Divisor.
+	 * 
+	 * @param division The other Rational to be divided.
+	 * @return A new Rational which represents the result of division.
+	 * @since 0.0.18
+	 */
 	public Rational divide(Rational divisor) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rational(
+				this.numerator * divisor.denominator,
+				this.denominator * divisor.numerator);
 	}
 	
 	/**
