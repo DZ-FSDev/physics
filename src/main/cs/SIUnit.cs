@@ -23,6 +23,28 @@ namespace COM.DZ_FSDev.Physics
     /// </summary>
     public abstract class SIUnit : IUnit
     {
+        public string Name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public string Symbol { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public int Order { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+        public bool CanAdd(IUnit unit)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IUnit DivideBy(IUnit unit)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IUnit MultiplyBy(IUnit unit)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IUnit Pow(decimal exponent)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
