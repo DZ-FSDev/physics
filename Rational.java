@@ -24,7 +24,7 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.19
+ * @version 0.0.20
  * @since 17.0.2
  */
 public class Rational extends Number implements Comparable<Rational>{
@@ -197,6 +197,23 @@ public class Rational extends Number implements Comparable<Rational>{
 		return result;
 	}
 
+	/**
+	 * @since 0.0.20
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Rational))
+			return false;
+		Rational other = (Rational) obj;
+		if (denominator != other.denominator)
+			return false;
+		if (numerator != other.numerator)
+			return false;
+		return true;
+	}
+	
 	@Override
 	public int compareTo(Rational o) {
 		// TODO Auto-generated method stub
