@@ -29,13 +29,12 @@ package com.dz_fs_dev.physics;
  */
 public class Rational extends Number implements Comparable<Rational>{
 	/**
-	 * @since 0.0.1
+	 * @since 0.0.20
 	 */
-	private static final long serialVersionUID = 957014047269914354L;
-	
+	private static final long serialVersionUID = -8501455433949295842L;
 	private final long denominator;
 	private final long numerator;
-	
+
 	/**
 	 * Initializes a new instance of a Rational number equivalent in value.
 	 * 
@@ -45,7 +44,7 @@ public class Rational extends Number implements Comparable<Rational>{
 	public Rational(long value) {
 		this(value, 1);
 	}
-	
+
 	/**
 	 * Initializes a new instance of a Rational number given an integral
 	 * numerator and denominator. Denominators will be normalized positive.
@@ -60,7 +59,7 @@ public class Rational extends Number implements Comparable<Rational>{
 			numerator *= -1;
 			denominator *= -1;
 		}
-		
+
 		long gcd = numerator == 0 ? denominator : Math.abs(gcd(numerator, denominator));
 		this.denominator = denominator / gcd;
 		this.numerator = numerator / gcd;
@@ -79,7 +78,7 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.numerator * augend.denominator + augend.numerator * this.denominator,
 				this.denominator * augend.denominator);
 	}
-	
+
 	/**
 	 * Returns a new Rational which represents the result of subtraction from
 	 * this Rational, the subtrahend.
@@ -93,7 +92,7 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.numerator * subtrahend.denominator - subtrahend.numerator * this.denominator,
 				this.denominator * subtrahend.denominator);
 	}
-	
+
 	/**
 	 * Returns a new Rational which represents the result of multiplication
 	 * between this Rational and the Multiplicand.
@@ -107,7 +106,7 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.numerator * multiplicand.numerator,
 				this.denominator * multiplicand.denominator);
 	}
-	
+
 	/**
 	 * Returns a new Rational which represents the result of division
 	 * between this Rational and the Divisor.
@@ -121,7 +120,7 @@ public class Rational extends Number implements Comparable<Rational>{
 				this.numerator * divisor.denominator,
 				this.denominator * divisor.numerator);
 	}
-	
+
 	/**
 	 * @since 0.0.8
 	 */
@@ -153,7 +152,7 @@ public class Rational extends Number implements Comparable<Rational>{
 	public double doubleValue() {
 		return (double)numerator / denominator;
 	}
-	
+
 	/**
 	 * Finds the lowest common multiple of two numbers.
 	 * 
@@ -164,11 +163,11 @@ public class Rational extends Number implements Comparable<Rational>{
 	 */
 	private static long lcm(long a, long b) {
 		if (a == 0 || b == 0)
-	        return 0;
-	    else
-	        return Math.abs(a * b) / gcd(a, b);
+			return 0;
+		else
+			return Math.abs(a * b) / gcd(a, b);
 	}
-	
+
 	/**
 	 * Recursively finds the greatest common divisor using Euclid's Algorithm
 	 * for two numbers.
@@ -180,11 +179,11 @@ public class Rational extends Number implements Comparable<Rational>{
 	 */
 	private static long gcd(long a, long b) {
 		if (b == 0) {
-	        return a;
-	    }
-	    return gcd(b, a % b);
+			return a;
+		}
+		return gcd(b, a % b);
 	}
-	
+
 	/**
 	 * @since 0.0.19
 	 */
@@ -213,7 +212,7 @@ public class Rational extends Number implements Comparable<Rational>{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public int compareTo(Rational o) {
 		// TODO Auto-generated method stub
