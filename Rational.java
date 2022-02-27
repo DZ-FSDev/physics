@@ -24,8 +24,8 @@ package com.dz_fs_dev.physics;
  * is a member of Integer.
  * 
  * @author DZ-FSDev
- * @version 0.0.18
- * @since 17.0.1
+ * @version 0.0.19
+ * @since 17.0.2
  */
 public class Rational extends Number implements Comparable<Rational>{
 	/**
@@ -183,6 +183,18 @@ public class Rational extends Number implements Comparable<Rational>{
 	        return a;
 	    }
 	    return gcd(b, a % b);
+	}
+	
+	/**
+	 * @since 0.0.19
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (denominator ^ (denominator >>> 32));
+		result = prime * result + (int) (numerator ^ (numerator >>> 32));
+		return result;
 	}
 
 	@Override
