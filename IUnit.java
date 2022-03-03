@@ -26,7 +26,7 @@ package com.dz_fs_dev.physics;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.8
+ * @version 0.0.9
  */
 public interface IUnit {
 	/**
@@ -68,46 +68,13 @@ public interface IUnit {
 	 */
 	public IUnit multiplyBy(IUnit o);
 	
-	/**
-	 * Returns true if this IUnit can be modified in quantity by another IUnit.
-	 * 
-	 * @param o The other IUnit.
-	 * @return True if this IUnit can be modified in quantity by another IUnit.
-	 */
-	public default boolean canAdd(IUnit o) {
-		return o.symbol().equals(this.symbol());
+	/**	
+	 * Returns true if this IUnit can be modified in quantity by another IUnit.	
+	 * 	
+	 * @param o The other IUnit.	
+	 * @return True if this IUnit can be modified in quantity by another IUnit.	
+	 */	
+	public default boolean canAdd(IUnit o) {	
+		return o.symbol().equals(this.symbol());	
 	}
-	
-	/**
-	 * Returns new units that represent the square of this unit of measure.
-	 * 
-	 * @return New units that represent the square of this unit of measure.
-	 */
-	public IUnit squared();
-	
-	/**
-	 * Returns new units that represent the cube of this unit of measure.
-	 * 
-	 * @return New units that represent the cube of this unit of measure.
-	 */
-	public IUnit cubed();
-	
-	/**
-	 * Returns new units that represent the specified exponentiation of this
-	 * unit of measure. An exponentiation of 0 or 1 will result in the return
-	 * of the original unit of measure.
-	 * 
-	 * @param exponent The exponentiation to be applied; values of 0 and 1
-	 *                 are ignored.
-	 * @return New units that represent the specified exponentiation of this
-	 *         unit of measure.
-	 */
-	public IUnit pow(int exponent);
-	
-	/**
-	 * Inverts the unit of measure.
-	 * 
-	 * @return The inverted unit of measure.
-	 */
-	public IUnit inverse();
 }
