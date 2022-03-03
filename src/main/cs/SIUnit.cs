@@ -16,6 +16,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+using System;
+
 namespace COM.DZ_FSDev.Physics
 {
     /// <summary>
@@ -23,9 +25,29 @@ namespace COM.DZ_FSDev.Physics
     /// </summary>
     public abstract class SIUnit : IUnit
     {
-        public string Name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public string Symbol { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public int Order { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        private int _order;
+
+        /// <summary>
+        /// Gets the name of this SIUnit.
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// Gets the symbol of this SIUnit
+        /// </summary>
+        public string Symbol { get; }
+
+        /// <summary>
+        /// Gets the Order of this SIUnit.
+        /// </summary>
+        public int Order { 
+            get { return _order; } 
+            private set 
+            {
+                if (value < 0) throw new ArgumentException("Order cannot be zero.","value");
+                _order = value;
+            }
+        }
 
         public bool CanAdd(IUnit unit)
         {
