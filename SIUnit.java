@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.19
+ * @version 0.0.20
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -39,42 +39,42 @@ public abstract class SIUnit implements IUnit{
 	 * <p>Measured in Hertz.
 	 */
 	final static BigDecimal HYPERFINE_TRANSITION_FREQUENCY_CESIUM = new BigDecimal("9192631770");
-	
+
 	/**
 	 * The speed of light in a vacuum.
 	 * <br>
 	 * <p>Measured in Hertz.
 	 */
 	final static BigDecimal SPEED_OF_LIGHT = new BigDecimal("299792458");
-	
+
 	/**
 	 * Predicts the spectral distribution of thermal black-body radiation.
 	 * <br>
 	 * <p>Measured in Joule seconds. 
 	 */
 	final static BigDecimal PLANCK = new BigDecimal("6.62607015e-34");
-	
+
 	/**
 	 * The magnitude of electric charge carried by a single proton or, single electron.
 	 * <br>
 	 * <p>Measured in Coulombs. 
 	 */
 	final static BigDecimal ELEMENTARY_CHARGE = new BigDecimal("1.602176634e-19");
-	
+
 	/**
 	 * Relates the average relative kinetic energy of particles with the thermodynamic temperature of gases.
 	 * <br>
 	 * <p>Measured in Joules per Kelvin. 
 	 */
 	final static BigDecimal BOLTZMANN = new BigDecimal("1.380649e-23");
-	
+
 	/**
 	 * Relates the number of particles with the amount of substance in said sample.
 	 * <br>
 	 * <p>Measured in Mole<sup>-1</sup>. 
 	 */
 	final static BigDecimal AVAGADRO = new BigDecimal("6.02214076e+23");
-	
+
 	/**
 	 * A measure of how well a light source producing monochromatic 540e<sup>12</sup> Hz radiation
 	 * is visible to the human eye.
@@ -82,13 +82,13 @@ public abstract class SIUnit implements IUnit{
 	 * <p>Measured in Lumens per Watt. 
 	 */
 	final static BigDecimal LUMINOUS_EFFICACY = new BigDecimal("683");
-	
+
 	/** Electric Current */
 	static class Ampere extends SIUnit implements IPowable<Ampere>{
 		public Ampere(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "A";
@@ -101,23 +101,25 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Ampere pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
 		public Ampere pow(Rational exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			if(exponent.doubleValue() == 0)
+				throw new IllegalArgumentException(
+						String.format("Cannot raise %s to the power of 0!", this.getClass().getName()));
+
+			return new Ampere(exponent.multiply(this.getOrder()));
 		}
 	}
-	
+
 	/** Luminous Intensity */
 	static class Candela extends SIUnit implements IPowable<Candela>{
 		public Candela(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "cd";
@@ -140,13 +142,13 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	/** Thermodynamic Temperature */
 	static class Kelvin extends SIUnit implements IPowable<Kelvin>{
 		public Kelvin(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "K";
@@ -169,13 +171,13 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	/** Mass */
 	static class Gram extends SIUnit implements IPowable<Gram>{
 		public Gram(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "g";
@@ -198,13 +200,13 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	/** Distance */
 	static class Meter extends SIUnit implements IPowable<Meter>{
 		public Meter(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "m";
@@ -227,13 +229,13 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	/** Substance */
 	static class Mole extends SIUnit implements IPowable<Mole>{
 		public Mole(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "mol";
@@ -256,13 +258,13 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	/** Time */
 	static class Second extends SIUnit implements IPowable<Second>{
 		public Second(Rational order) {
 			super(order);
 		}
-		
+
 		@Override
 		public String symbol() {
 			return "s";
@@ -285,9 +287,9 @@ public abstract class SIUnit implements IUnit{
 			return null;
 		}
 	}
-	
+
 	private @Getter Rational order;
-	
+
 	/**
 	 * 
 	 * @param order
@@ -296,7 +298,7 @@ public abstract class SIUnit implements IUnit{
 	private SIUnit(Rational order) {
 		this.order = order;
 	}
-	
+
 	/**
 	 * @since 0.0.7
 	 */
@@ -305,7 +307,7 @@ public abstract class SIUnit implements IUnit{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	/**
 	 * @since 0.0.7
 	 */
