@@ -28,8 +28,8 @@ import lombok.Getter;
  * @see <a href=https://physics.nist.gov/cuu/Units/checklist.html>
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
- * @since 17.0.1
- * @version 0.0.18
+ * @since 17.0.2
+ * @version 0.0.19
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -85,7 +85,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Electric Current */
 	static class Ampere extends SIUnit implements IPowable<Ampere>{
-		public Ampere(int order) {
+		public Ampere(Rational order) {
 			super(order);
 		}
 		
@@ -114,7 +114,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Luminous Intensity */
 	static class Candela extends SIUnit implements IPowable<Candela>{
-		public Candela(int order) {
+		public Candela(Rational order) {
 			super(order);
 		}
 		
@@ -143,7 +143,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Thermodynamic Temperature */
 	static class Kelvin extends SIUnit implements IPowable<Kelvin>{
-		public Kelvin(int order) {
+		public Kelvin(Rational order) {
 			super(order);
 		}
 		
@@ -172,7 +172,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Mass */
 	static class Gram extends SIUnit implements IPowable<Gram>{
-		public Gram(int order) {
+		public Gram(Rational order) {
 			super(order);
 		}
 		
@@ -201,7 +201,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Distance */
 	static class Meter extends SIUnit implements IPowable<Meter>{
-		public Meter(int order) {
+		public Meter(Rational order) {
 			super(order);
 		}
 		
@@ -230,7 +230,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Substance */
 	static class Mole extends SIUnit implements IPowable<Mole>{
-		public Mole(int order) {
+		public Mole(Rational order) {
 			super(order);
 		}
 		
@@ -259,7 +259,7 @@ public abstract class SIUnit implements IUnit{
 	
 	/** Time */
 	static class Second extends SIUnit implements IPowable<Second>{
-		public Second(int order) {
+		public Second(Rational order) {
 			super(order);
 		}
 		
@@ -286,10 +286,14 @@ public abstract class SIUnit implements IUnit{
 		}
 	}
 	
-	private @Getter final int order;
+	private @Getter Rational order;
 	
-	private SIUnit(int order) {
-		if(order == 0)throw new IllegalArgumentException("Order cannot be set to zero");
+	/**
+	 * 
+	 * @param order
+	 * @since 0.0.19
+	 */
+	private SIUnit(Rational order) {
 		this.order = order;
 	}
 	
