@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.27
+ * @version 0.0.28
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -99,6 +99,13 @@ public abstract class SIUnit implements IUnit{
 			return "Ampere";
 		}
 
+		@Override
+		public IUnit multiplyBy(IUnit o) {
+			if(o instanceof Ampere)
+				return new Ampere(o.getOrder().add(this.getOrder()));
+			return super.multiplyBy(o);
+		}
+		
 		@Override
 		public Ampere pow(int exponent) {
 			return pow(new Rational(exponent));
@@ -310,8 +317,9 @@ public abstract class SIUnit implements IUnit{
 	private @Getter Rational order;
 
 	/**
+	 * Initializes a new instance of an SIUnit with a specified order.
 	 * 
-	 * @param order
+	 * @param order The order of this SIUnit.
 	 * @since 0.0.19
 	 */
 	private SIUnit(Rational order) {
