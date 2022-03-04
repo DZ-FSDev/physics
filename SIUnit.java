@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.20
+ * @version 0.0.21
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -108,7 +108,8 @@ public abstract class SIUnit implements IUnit{
 		public Ampere pow(Rational exponent) {
 			if(exponent.doubleValue() == 0)
 				throw new IllegalArgumentException(
-						String.format("Cannot raise %s to the power of 0!", this.getClass().getName()));
+						String.format("Cannot raise %s to the power of 0!", 
+								this.getClass().getName()));
 
 			return new Ampere(exponent.multiply(this.getOrder()));
 		}
@@ -132,8 +133,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Candela pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
@@ -161,8 +161,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Kelvin pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
@@ -190,8 +189,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Gram pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
@@ -219,8 +217,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Meter pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
@@ -248,8 +245,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Mole pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
@@ -277,8 +273,7 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Second pow(int exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			return pow(new Rational(exponent));
 		}
 
 		@Override
