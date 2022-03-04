@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.22
+ * @version 0.0.23
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -170,8 +170,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Kelvin pow(Rational exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			if(exponent.doubleValue() == 0)
+				throw new IllegalArgumentException(
+						String.format("Cannot raise %s to the power of 0!", 
+								this.getClass().getName()));
+
+			return new Kelvin(exponent.multiply(this.getOrder()));
 		}
 	}
 
