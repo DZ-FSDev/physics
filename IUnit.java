@@ -1,6 +1,6 @@
 /*  Original Licensing Copyright
  * 
- *  This interface represents a value which containing measurement units.
+ *  This interface represents a value which contains measurement units.
  *  Copyright (C) 2021  DZ-FSDev
  *  
  *  This program is free software: you can redistribute it and/or modify
