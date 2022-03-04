@@ -26,7 +26,7 @@ package com.dz_fs_dev.physics;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.10
+ * @version 0.0.11
  */
 public interface IUnit {
 	/**
@@ -47,8 +47,9 @@ public interface IUnit {
 	 * Returns the order of this unit of measure.
 	 * 
 	 * @return The order of this unit of measure.
+	 * @since 0.0.11
 	 */
-	public int getOrder();
+	public Rational getOrder();
 
 	/**
 	 * Returns a new IUnit corresponding to if this IUnit was divided by
@@ -73,10 +74,10 @@ public interface IUnit {
 	 * 
 	 * @param o The other IUnit.
 	 * @return True if this IUnit can be modified in quantity by another IUnit.
-	 * @since 0.0.10
+	 * @since 0.0.11
 	 */
 	public default boolean canAdd(IUnit o) {
 		return o.getClass().equals(this.getClass()) &&
-				o.getOrder() == this.getOrder();
+				o.getOrder().equals(this.getOrder());
 	}
 }
