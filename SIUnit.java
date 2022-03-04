@@ -29,7 +29,7 @@ import lombok.Getter;
  *      NIST SI Unit Rules and Style Conventions</a>
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.26
+ * @version 0.0.27
  */
 public abstract class SIUnit implements IUnit{
 	/**
@@ -298,8 +298,12 @@ public abstract class SIUnit implements IUnit{
 
 		@Override
 		public Second pow(Rational exponent) {
-			// TODO Auto-generated method stub
-			return null;
+			if(exponent.doubleValue() == 0)
+				throw new IllegalArgumentException(
+						String.format("Cannot raise %s to the power of 0!", 
+								this.getClass().getName()));
+
+			return new Second(exponent.multiply(this.getOrder()));
 		}
 	}
 
